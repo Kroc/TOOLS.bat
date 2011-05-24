@@ -17,18 +17,18 @@ CLS & ECHO ^
 ³ [CF] ComboFix           ³ [10] Flash Installers   ³                         ³ ^
 ³ [RK] RKill              ³ [FF] Firefox            ³                         ³ ^
 ³ [GM] GMER               ³ [GC] Google Chrome      ³                         ³ ^
-³ [MS] MS Securtity Ess.  ³ [UK] CrucialScanner     ³                         ³ ^
-³ [SD] Spybot SD          ³ [Z]  CPU-Z              ³                         ³ ^
-³ [CC] CCleaner           ³ [FI] Foxit Reader       ³                         ³ ^
-³ [AV] AVG Removers       ³ [QT] QTLite             ³                         ³ ^
-³                         ³ [RA] RealAlternative    ³                         ³ ^
+³ [MS] MS Securtity Ess.  ³                         ³                         ³ ^
+³ [SD] Spybot SD          ³ [FI] Foxit Reader       ³                         ³ ^
+³ [CC] CCleaner           ³ [QT] QTLite             ³                         ³ ^
+³ [AV] AVG Removers       ³ [RA] RealAlternative    ³                         ³ ^
 ³                         ³ [IT] iTunes             ³                         ³ ^
 ³                         ³ [V]  VLC                ³                         ³ ^
-³                         ³ [N]  Norton Removal     ³                         ³ ^
+³                         ³                         ³                         ³ ^
+³                         ³ [UK] CrucialScanner     ³                         ³ ^
 ³                         ³ [SP] Speccy             ³                         ³ ^
+³                         ³ [Z]  CPU-Z              ³                         ³ ^
 ³                         ³                         ³                         ³ ^
-³                         ³                         ³                         ³ ^
-³                         ³                         ³                         ³ ^
+³                         ³ [N]  Norton Removal     ³                         ³ ^
 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ ^
 ³ [A] Download All        ³ [AP] Upate AutoPatcher                            ³ ^
 ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
