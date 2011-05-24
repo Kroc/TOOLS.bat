@@ -4,7 +4,7 @@ TITLE Tools - Update
 
 :: configure update options
 SET "UPDATE_WEEKLY=CF RK GM MS SD CC AV"
-SET "UPDATE_MONTHLY=10 FF GC UK Z FI QT RA IT V N SP"
+SET "UPDATE_MONTHLY=10 FF GC UK Z FI QT RA IT V N SP J"
 SET "UPDATE_ALL=%UPDATE_WEEKLY% %UPDATE_MONTHLY%"
 
 :menu
@@ -14,7 +14,7 @@ CLS & ECHO ^
 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄ´ ^
 ³ [W]  All Weekly         ³ [M]  All Monthly                                  ³ ^
 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ ^
-³ [CF] ComboFix           ³ [10] Flash Installers   ³                         ³ ^
+³ [CF] ComboFix           ³ [10] Flash Installers   ³ [J] Java                ³ ^
 ³ [RK] RKill              ³ [FF] Firefox            ³                         ³ ^
 ³ [GM] GMER               ³ [GC] Google Chrome      ³                         ³ ^
 ³ [MS] MS Securtity Ess.  ³                         ³                         ³ ^
@@ -286,6 +286,12 @@ ERASE /Q /F "..\utils\clean\speccy\*.*"
 ERASE /Q /F "..\utils\clean\speccy.zip"
 GOTO:EOF
 
+:update_J
+:: Java
+CALL :download "Java" ^
+	"..\internet\jre.exe" ^
+	"http://javadl.sun.com/webapps/download/AutoDL?BundleId=48343"
+GOTO:EOF
 
 ::===========================================================================================================================
 ::functions

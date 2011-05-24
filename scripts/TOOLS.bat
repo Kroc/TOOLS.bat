@@ -44,7 +44,7 @@ ECHO ^
 ³ [R]  Remove Antivirus.. ³ [IE] IE8 / IE9          ³ [RA] RealAlternative    ³ ^
 ³                         ³                         ³ [QT] QTLite             ³ ^
 ³ [H]  HiJackThis         ³ [10] Flash Player       ³ [IT] iTunes   [V] VLC   ³ ^
-³ [CF] ComboFix           ³ [SA] Site Advisor       ³                         ³ ^
+³ [CF] ComboFix           ³ [J]  Java               ³                         ³ ^
 ³ [RK] RKill  [GM] GMER   ³                         ³ [LO] LibreOffice 3.3    ³ ^
 ³ [SD] Spybot [SI] Update ³ [CC] CCleaner [C] -run  ³ [TB] Thunderbird        ³ ^
 ³                         ³                         ³                         ³ ^
@@ -152,8 +152,14 @@ IF /I [%M%]==[ie] (
 	IF [%WINVER%]==[7] IF [%WINBIT%]==[32]  CALL :launch "internet\IE9-Windows7-x86-enu.exe"
 	GOTO :menu
 )
-REM *** Flash Player 10 ***
+
 IF /I [%M%]==[10] CALL :flash							& GOTO :menu	REM * Flash Player
+IF /I [%M%]==[J] (
+	CLS & scripts\banner "Java"
+	ECHO  * Installing Java Runtime Environment...
+	internet\jre.exe /s
+	GOTO :menu
+)
 
 REM *** Reset TCP/IP ***
 IF /I [%M%]==[ip] (
