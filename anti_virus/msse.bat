@@ -6,11 +6,11 @@ REM change to same directory as script
 CD /d %~dp0
 
 REM Get shared vars, WINVER / WINBIT ...
-CALL scripts\vars.bat
+CALL ..\scripts\vars.bat
 
 ::===========================================================================================================================
 
-CLS & CALL scripts\banner "Launching Microsoft Security Essentials..."
+CLS & CALL ..\scripts\banner "Microsoft Security Essentials"
 
 ECHO.
 ECHO  * Installing...

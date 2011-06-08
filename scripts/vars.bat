@@ -14,6 +14,14 @@ IF %ERRORLEVEL% EQU 0 SET "WINVER=VISTA" & GOTO :eof
 VER | FINDSTR /IL "6\.1\." > NUL
 IF %ERRORLEVEL% EQU 0 SET "WINVER=7"	 & GOTO :eof
 CLS
+
+REM Set the program path based on the bit version.
+IF [%WINBIT%]==[64] (
+	SET "PROGRAMS=%PROGRAMFILES(x86)%"
+) ELSE (
+	SET "PROGRAMS=%PROGRAMFILES%"
+)
+
 ECHO.
 ECHO ! Unsupported Windows Version
 ECHO.

@@ -190,7 +190,7 @@ IF /I [%M%]==[ra] CALL :launch "end_user\realaltlite.exe"			& GOTO :menu	REM * R
 IF /I [%M%]==[qt] CALL :launch "end_user\qtlite.exe"				& GOTO :menu	REM * QuickTime Lites
 IF /I [%M%]==[v]  CALL :launch "end_user\vlc-win32.exe"				& GOTO :menu	REM * VLC
 
-IF /I [%M%]==[tb] CALL :launch "end_user\Thunderbird Setup 3.0.4.exe"		& GOTO :menu	REM * Thunderbird
+IF /I [%M%]==[tb] CALL :launch "end_user\Thunderbird Setup 3.1.4.exe"		& GOTO :menu	REM * Thunderbird
 
 IF /I [%M%]==[lo] CALL :launch "end_user\LibreOffice 3.3\setup.exe"		& GOTO :menu	REM * LibreOffice
 
@@ -377,13 +377,6 @@ GOTO :EOF
 :ffxex
 REM Firefox Extensions
 
-REM Set the program path based on the bit version.
-IF [%WINBIT%]==[64] (
-	SET "P=%PROGRAMFILES(x86)%\Mozilla Firefox"
-) ELSE (
-	SET "P=%PROGRAMFILES%\Mozilla Firefox"
-)
-
 REM Kill firefox to ensure the START commands will instal the extensions.
 IF [%WINVER%]==[XP] (
 	TSKILL Firefox
@@ -399,7 +392,7 @@ ECHO.
 ECHO   Installing Addons...
 ECHO.
 ECHO * AdBlock Plus
-COPY /Y "..\internet\AdBlockPlus.xpi" "%P%\extensions\{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi" > NUL
+COPY /Y "..\internet\AdBlockPlus.xpi" "%PROGRAMS%\Mozilla Firefox\extensions\{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi" > NUL
 IF ERRORLEVEL 1 (
 	ECHO ! Failed
 ) ELSE (
@@ -407,7 +400,7 @@ IF ERRORLEVEL 1 (
 )
 ECHO.
 ECHO * Web Of Trust
-COPY /Y "..\internet\WebOfTrust.xpi" "%P%\extensions\{a0d7ccb3-214d-498b-b4aa-0e8fda9a7bf7}.xpi" > NUL
+COPY /Y "..\internet\WebOfTrust.xpi" "%PROGRAMS%\Mozilla Firefox\extensions\{a0d7ccb3-214d-498b-b4aa-0e8fda9a7bf7}.xpi" > NUL
 IF ERRORLEVEL 1 (
 	ECHO ! Failed
 ) ELSE (
@@ -415,8 +408,8 @@ IF ERRORLEVEL 1 (
 )
 ECHO.
 ECHO * English-British Dictionary
-MKDIR "%P%\extensions\en-GB@dictionaries.addons.mozilla.org"
-COPY /Y "..\internet\en-GB@dictionaries.addons.mozilla.org\*.*" "%P%\extensions\en-GB@dictionaries.addons.mozilla.org\" > NUL
+MKDIR "%PROGRAMS%\Mozilla Firefox\extensions\en-GB@dictionaries.addons.mozilla.org"
+COPY /Y "..\internet\en-GB@dictionaries.addons.mozilla.org\*.*" "%PROGRAMS%\Mozilla Firefox\extensions\en-GB@dictionaries.addons.mozilla.org\" > NUL
 IF ERRORLEVEL 1 (
 	ECHO ! Failed
 ) ELSE (
