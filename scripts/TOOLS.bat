@@ -190,9 +190,9 @@ IF /I [%M%]==[ra] CALL :launch "end_user\realaltlite.exe"			& GOTO :menu	REM * R
 IF /I [%M%]==[qt] CALL :launch "end_user\qtlite.exe"				& GOTO :menu	REM * QuickTime Lites
 IF /I [%M%]==[v]  CALL :launch "end_user\vlc-win32.exe"				& GOTO :menu	REM * VLC
 
-IF /I [%M%]==[tb] CALL :launch "end_user\Thunderbird Setup 3.1.4.exe"		& GOTO :menu	REM * Thunderbird
+IF /I [%M%]==[tb] CALL :launch "end_user\Thunderbird Setup.exe"			& GOTO :menu	REM * Thunderbird
 
-IF /I [%M%]==[lo] CALL :launch "end_user\LibreOffice 3.3\setup.exe"		& GOTO :menu	REM * LibreOffice
+IF /I [%M%]==[lo] CALL :launch "end_user\LibreOffice\setup.exe"			& GOTO :menu	REM * LibreOffice
 
 IF /I [%M%]==[ts] CALL :launch "utils\clean\TreeSizeFree.exe"			& GOTO :menu	REM * TreeSize
 IF /I [%M%]==[w]  IF [%WINBIT%]==[64] CALL :launch "utils\winrar-x64-393.exe"	& GOTO :menu	REM * WinRAR (64-Bit)
