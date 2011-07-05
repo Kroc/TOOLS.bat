@@ -195,7 +195,7 @@ IF /I [%M%]==[ra] CALL :launch end_user\realaltlite.exe					& GOTO :menu  REM * 
 IF /I [%M%]==[qt] CALL :launch end_user\qtlite.exe					& GOTO :menu  REM * QuickTime Lites
 IF /I [%M%]==[v]  CALL :launch end_user\vlc-win32.exe					& GOTO :menu  REM * VLC
 
-IF /I [%M%]==[tb] CALL :launch end_user\Thunderbird Setup.exe				& GOTO :menu  REM * Thunderbird
+IF /I [%M%]==[tb] CALL :launch end_user\Thunderbird_Setup.exe				& GOTO :menu  REM * Thunderbird
 
 IF /I [%M%]==[lo] CALL :launch end_user\LibreOffice\setup.exe				& GOTO :menu  REM * LibreOffice
 
