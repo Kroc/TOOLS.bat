@@ -184,8 +184,8 @@ IF /I [%M%]==[ar] (
 IF /I [%M%]==[fi] CALL :launch end_user\FoxitReader_enu.msi				& GOTO :menu  REM * Foxit Reader
 
 IF /I [%M%]==[cc] CALL :launch utils\clean\ccleaner.exe					& GOTO :menu  REM * CClenaer(Install)
-IF /I [%M%]==[c] IF [%WINBIT%]==[64] CALL :launch utils\clean\ccleaner\CCleaner.exe	& GOTO :menu  REM * Speccy (64-Bit)
-IF /I [%M%]==[c] IF [%WINBIT%]==[32] CALL :launch utils\clean\ccleaner\CCleaner64.exe	& GOTO :menu  REM * Speccy (32-Bit)
+IF /I [%M%]==[c] IF [%WINBIT%]==[64] CALL :launch utils\clean\ccleaner\CCleaner64.exe	& GOTO :menu  REM * Speccy (64-Bit)
+IF /I [%M%]==[c] IF [%WINBIT%]==[32] CALL :launch utils\clean\ccleaner\CCleaner.exe	& GOTO :menu  REM * Speccy (32-Bit)
 IF /I [%M%]==[cu] CALL :launch utils\clean\msicuu2\msicuu.exe				& GOTO :menu  REM * MSI CleanUp Util
 IF /I [%M%]==[af] CALL :launch utils\AutoFix.exe					& GOTO :menu  REM * AutoPlay Fix
 
@@ -211,6 +211,9 @@ IF /I [%M%]==[sp] IF [%WINBIT%]==[32] CALL :launch utils\clean\speccy\Speccy.exe
 
 IF /I [%M%]==[it] IF [%WINBIT%]==[64] CALL :launch end_user\iTunes64Setup.exe		& GOTO :menu  REM * iTunes (64-Bit)
 IF /I [%M%]==[it] IF [%WINBIT%]==[32] CALL :launch end_user\iTunesSetup.exe		& GOTO :menu  REM * iTunes (32-Bit)
+
+IF /I [%M%]==[tv] copy \WillsStuff\TeamviewerQS.exe ^
+      "%ALLUSERSPROFILE%\Start Menu\Programs\Accessories\TeamViewer 07904 041789.exe" 	& GOTO :menu  REM * Copy TeamViewer striaght to the all users start menu  
 
 IF /I [%M%]==[m] START msconfig								& GOTO :menu  REM * msconfig
 IF /I [%M%]==[a] START appwiz.cpl							& GOTO :menu  REM * appwiz.cpl
