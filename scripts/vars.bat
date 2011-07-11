@@ -6,6 +6,13 @@ IF /I [%PROCESSOR_ARCHITECTURE%]==[AMD64] SET "WINBIT=64"
 IF [%WINBIT%]==[32] SET "HSTART=scripts\hstart\hstart.exe"
 IF [%WINBIT%]==[64] SET "HSTART=scripts\hstart\x64\hstart64.exe"
 
+REM Set the program path based on the bit version.
+IF [%WINBIT%]==[64] (
+	SET "PROGRAMS=%PROGRAMFILES(x86)%"
+) ELSE (
+	SET "PROGRAMS=%PROGRAMFILES%"
+)
+
 SET "WINVER=NUL"
 VER | FINDSTR /IL "5\.1\." > NUL
 IF %ERRORLEVEL% EQU 0 SET "WINVER=XP" 	 & GOTO :eof
@@ -14,13 +21,6 @@ IF %ERRORLEVEL% EQU 0 SET "WINVER=VISTA" & GOTO :eof
 VER | FINDSTR /IL "6\.1\." > NUL
 IF %ERRORLEVEL% EQU 0 SET "WINVER=7"	 & GOTO :eof
 CLS
-
-REM Set the program path based on the bit version.
-IF [%WINBIT%]==[64] (
-	SET "PROGRAMS=%PROGRAMFILES^(x86^)%"
-) ELSE (
-	SET "PROGRAMS=%PROGRAMFILES%"
-)
 
 ECHO.
 ECHO ! Unsupported Windows Version
