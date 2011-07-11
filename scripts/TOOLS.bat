@@ -212,9 +212,6 @@ IF /I [%M%]==[sp] IF [%WINBIT%]==[32] CALL :launch utils\clean\speccy\Speccy.exe
 IF /I [%M%]==[it] IF [%WINBIT%]==[64] CALL :launch end_user\iTunes64Setup.exe		& GOTO :menu  REM * iTunes (64-Bit)
 IF /I [%M%]==[it] IF [%WINBIT%]==[32] CALL :launch end_user\iTunesSetup.exe		& GOTO :menu  REM * iTunes (32-Bit)
 
-IF /I [%M%]==[tv] copy \WillsStuff\TeamviewerQS.exe ^
-      "%ALLUSERSPROFILE%\Start Menu\Programs\Accessories\TeamViewer 07904 041789.exe" 	& GOTO :menu  REM * Copy TeamViewer striaght to the all users start menu  
-
 IF /I [%M%]==[m] START msconfig								& GOTO :menu  REM * msconfig
 IF /I [%M%]==[a] START appwiz.cpl							& GOTO :menu  REM * appwiz.cpl
 IF /I [%M%]==[i] START inetcpl.cpl							& GOTO :menu  REM * inetcpl.cpl
