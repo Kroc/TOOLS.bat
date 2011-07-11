@@ -17,7 +17,7 @@ CLS
 
 REM Set the program path based on the bit version.
 IF [%WINBIT%]==[64] (
-	SET "PROGRAMS=%PROGRAMFILES(x86)%"
+	SET "PROGRAMS=%PROGRAMFILES^(x86^)%"
 ) ELSE (
 	SET "PROGRAMS=%PROGRAMFILES%"
 )
