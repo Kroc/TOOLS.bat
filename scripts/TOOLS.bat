@@ -46,7 +46,7 @@ ECHO ^
 ³ [H]  HiJackThis         ³ [10] Flash Player       ³ [QT] QTLite             ³ ^
 ³ [CF] ComboFix           ³ [J]  Java               ³ [IT] iTunes   [V] VLC   ³ ^
 ³ [RK] RKill  [GM] GMER   ³                         ³                         ³ ^
-³ [SD] Spybot [SI] Update ³ [CC] CCleaner [C] -run  ³ [LO] LibreOffice 3.3    ³ ^
+³ [SD] Spybot [SI] Update ³ [CC] CCleaner [C] -run  ³ [LO] LibreOffice        ³ ^
 ³                         ³                         ³                         ³ ^
 ³ %_SP_SLOT_1___________% ³ [IP] Reset TCP/IP       ³ [CU] MSI CleanUp Util.  ³ ^
 ³ %_SP_SLOT_2___________% ³ [WN] WirelessNetView    ³ [AF] AutoPlay Fix       ³ ^
