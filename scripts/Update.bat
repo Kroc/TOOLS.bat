@@ -95,10 +95,10 @@ GOTO:EOF
 :update_MS
 CALL :download "Microsoft Security Essentials (32-Bit)" ^
 	"..\anti_virus\mseinstall_x86.exe" ^
-	"http://download.microsoft.com/download/A/3/8/A38FFBF2-1122-48B4-AF60-E44F6DC28BD8/en-us/x86/mseinstall.exe"
+	"http://mse.dlservice.microsoft.com/download/A/3/8/A38FFBF2-1122-48B4-AF60-E44F6DC28BD8/enus/x86/mseinstall.exe"
 CALL :download "Microsoft Security Essentials (64-Bit)" ^
 	"..\anti_virus\mseinstall_x64.exe" ^
-	"http://download.microsoft.com/download/A/3/8/A38FFBF2-1122-48B4-AF60-E44F6DC28BD8/en-us/amd64/mseinstall.exe"
+	"http://mse.dlservice.microsoft.com/download/A/3/8/A38FFBF2-1122-48B4-AF60-E44F6DC28BD8/enus/amd64/mseinstall.exe"
 ::Microsoft Security Essentials (Definitions)
 CALL :download "Microsoft Security Essentials Update Definitions" ^
 	"..\anti_virus\mpam-fe.exe" ^
