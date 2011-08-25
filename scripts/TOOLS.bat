@@ -208,6 +208,7 @@ IF /I [%M%]==[uk] CALL :temp utils\info\CrucialUKScan.exe				& GOTO :menu  REM *
 
 IF /I [%M%]==[sp] IF [%WINBIT%]==[64] CALL :launch utils\clean\speccy\Speccy64.exe	& GOTO :menu  REM * Speccy (64-Bit)
 IF /I [%M%]==[sp] IF [%WINBIT%]==[32] CALL :launch utils\clean\speccy\Speccy.exe	& GOTO :menu  REM * Speccy (32-Bit)
+IF /I [%M%]==[sx] CALL :temp utils\info\SystemExplorer\SystemExplorer.exe		& GOTO :menu  REM * System Explorer
 
 IF /I [%M%]==[it] IF [%WINBIT%]==[64] CALL :launch end_user\iTunes64Setup.exe		& GOTO :menu  REM * iTunes (64-Bit)
 IF /I [%M%]==[it] IF [%WINBIT%]==[32] CALL :launch end_user\iTunesSetup.exe		& GOTO :menu  REM * iTunes (32-Bit)
