@@ -414,8 +414,9 @@ IF ERRORLEVEL 1 (
 )
 ECHO.
 ECHO * English-British Dictionary
-MKDIR "%PROGRAMS%\Mozilla Firefox\extensions\en-GB@dictionaries.addons.mozilla.org"
-COPY /Y internet\en-GB@dictionaries.addons.mozilla.org\*.* "%PROGRAMS%\Mozilla Firefox\extensions\en-GB@dictionaries.addons.mozilla.org\" > NUL
+IF EXIST "%PROGRAMS%\Mozilla Firefox\dictionaries\" RMDIR /S /Q "%PROGRAMS%\Mozilla Firefox\dictionaries"
+MKDIR "%PROGRAMS%\Mozilla Firefox\dictionaries\"
+COPY /Y internet\en-GB@dictionaries.addons.mozilla.org\dictionaries\*.* "%PROGRAMS%\Mozilla Firefox\dictionaries\" > NUL
 IF ERRORLEVEL 1 (
 	ECHO ! Failed
 ) ELSE (
