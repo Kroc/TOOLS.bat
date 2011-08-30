@@ -177,8 +177,10 @@ IF /I [%M%]==[ip] (
 ::---------------------------------------------------------------------------------------------------------------------------
 IF /I [%M%]==[p]  GOTO :passwords
 
+REM * Adobe Reader
 IF /I [%M%]==[ar] (
-	end_user\AdbeRdr_en_US.exe /sPB /rs /msi EULA_ACCEPT=YES REMOVE_PREVIOUS=YES /qn
+	REM Automated install. Removes Adobe v8/9 for you.
+	START "" end_user\AdbeRdr_en_US.exe "/sPB /rs /msi EULA_ACCEPT=YES REMOVE_PREVIOUS=YES /qn"
 	GOTO :menu
 )
 IF /I [%M%]==[fi] CALL :launch end_user\FoxitReader_enu.msi				& GOTO :menu  REM * Foxit Reader
