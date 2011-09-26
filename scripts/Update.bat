@@ -177,8 +177,7 @@ GOTO:EOF
 :: Firefox
 CALL :download "Firefox" ^
 	"..\internet\Firefox_Setup.exe" ^
-	"http://www.mozilla.com/en-US/firefox/all.html" ^
-	"http://download\.mozilla\.org/\?product=firefox-.*?&amp;os=win&amp;lang=en-GB"
+	"http://download.mozilla.org/?product=firefox-6.0.2&os=win&lang=en-GB"
 :: Firefox - AdBlock Plus
 CALL :download "Firefox - AdBlock Plus" ^
 	"..\internet\AdBlockPlus.xpi" ^

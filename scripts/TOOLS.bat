@@ -210,7 +210,7 @@ IF /I [%M%]==[uk] CALL :temp utils\info\CrucialUKScan.exe				& GOTO :menu  REM *
 
 IF /I [%M%]==[sp] IF [%WINBIT%]==[64] CALL :launch utils\clean\speccy\Speccy64.exe	& GOTO :menu  REM * Speccy (64-Bit)
 IF /I [%M%]==[sp] IF [%WINBIT%]==[32] CALL :launch utils\clean\speccy\Speccy.exe	& GOTO :menu  REM * Speccy (32-Bit)
-IF /I [%M%]==[sx] CALL :temp utils\info\SystemExplorer\SystemExplorer.exe		& GOTO :menu  REM * System Explorer
+IF /I [%M%]==[sx] COPY utils\info\SystemExplorer\*.* %TEMP% & START %TEMP%\SystemExplorer.exe & GOTO :menu  REM * System Explorer
 
 IF /I [%M%]==[it] IF [%WINBIT%]==[64] CALL :launch end_user\iTunes64Setup.exe		& GOTO :menu  REM * iTunes (64-Bit)
 IF /I [%M%]==[it] IF [%WINBIT%]==[32] CALL :launch end_user\iTunesSetup.exe		& GOTO :menu  REM * iTunes (32-Bit)
@@ -398,6 +398,7 @@ REM Copy the XPI files to the extensions folder.
 
 ECHO.
 ECHO   Installing Addons...
+ECHO %PROGRAMS%
 ECHO.
 ECHO * AdBlock Plus
 COPY /Y internet\AdBlockPlus.xpi "%PROGRAMS%\Mozilla Firefox\extensions\{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi" > NUL
