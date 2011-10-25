@@ -109,6 +109,12 @@ CALL :download "Microsoft Security Essentials Update Definitions (64-Bit)" ^
 	"http://go.microsoft.com/fwlink/?LinkID=87341"
 GOTO:EOF
 
+:update_A!
+CALL :download "Avast! (32-Bit)" ^
+	"..\anti_virus\Avast.exe" ^
+	"http://files.avast.com/iavs5x/setup_av_free.exe"
+GOTO:EOF
+
 :update_AV
 :: AVGRemover Free (32-Bit)
 CALL :download "AVGRemover Free (32-Bit)" ^
@@ -266,7 +272,8 @@ GOTO:EOF
 :: VideoLan
 CALL :download "VLC" ^
 	"..\end_user\vlc-win32.exe" ^
-	"http://www.free-codecs.com/download_soft.php?d=5924&s=171"
+	"http://www.free-codecs.com/VideoLAN_download.htm" ^
+	"http://www\.free-codecs\.com/download_soft\.php?d=\d{4}&s=171"
 GOTO:EOF
 
 :update_N
