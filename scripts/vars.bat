@@ -4,7 +4,7 @@ IF /I [%PROCESSOR_ARCHITECTURE%]==[EM64T] SET "WINBIT=64"
 IF /I [%PROCESSOR_ARCHITECTURE%]==[AMD64] SET "WINBIT=64"
 
 IF [%WINBIT%]==[32] SET "HSTART=scripts\hstart\hstart.exe"
-IF [%WINBIT%]==[64] SET "HSTART=scripts\hstart\x64\hstart64.exe"
+IF [%WINBIT%]==[64] SET "HSTART=scripts\hstart\hstart64.exe"
 
 REM Set the program path based on the bit version.
 IF [%WINBIT%]==[64] (
@@ -20,6 +20,8 @@ VER | FINDSTR /IL "6\.0\." > NUL
 IF %ERRORLEVEL% EQU 0 SET "WINVER=VISTA" & GOTO :eof
 VER | FINDSTR /IL "6\.1\." > NUL
 IF %ERRORLEVEL% EQU 0 SET "WINVER=7"	 & GOTO :eof
+VER | FINDSTR /IL "6\.2\." > NUL
+IF %ERRORLEVEL% EQU 0 SET "WINVER=8"	 & GOTO :eof
 CLS
 
 ECHO.
