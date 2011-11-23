@@ -352,11 +352,13 @@ GOTO :passwords
 CLS
 CALL scripts\banner "Install Flash Player..."
 ECHO  * Install Flash Player for Firefox etc.
-internet\install_flash_player.exe -install
+IF [%WINBIT%]==[32] internet\install_flash_player_32bit.exe -install
+IF [%WINBIT%]==[64] internet\install_flash_player_64bit.exe -install
 IF ERRORLEVEL 1 ECHO  ! Failed
 ECHO.
 ECHO  * Install Flash Player for IE
-internet\install_flash_player_ax.exe -install
+IF [%WINBIT%]==[32] internet\install_flash_player_ax_32bit.exe -install
+IF [%WINBIT%]==[64] internet\install_flash_player_ax_64bit.exe -install
 IF ERRORLEVEL 1 ECHO  ! Failed & PAUSE
 GOTO:EOF
 
