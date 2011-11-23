@@ -3,8 +3,8 @@ COLOR 4E
 TITLE Tools - Update
 
 :: configure update options
-SET "UPDATE_WEEKLY=CF RK GM MS SD CC AV"
-SET "UPDATE_MONTHLY=10 FF GC UK Z FI QT RA IT V N SP J"
+SET "UPDATE_WEEKLY=CF RK GM MS A! SD CC AV"
+SET "UPDATE_MONTHLY=FL FF GC UK Z FI QT RA IT V N SP J"
 SET "UPDATE_ALL=%UPDATE_WEEKLY% %UPDATE_MONTHLY%"
 
 :menu
@@ -14,14 +14,14 @@ CLS & ECHO ^
 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄ´ ^
 ³ [W]  All Weekly         ³ [M]  All Monthly                                  ³ ^
 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ ^
-³ [CF] ComboFix           ³ [10] Flash Installers   ³ [J] Java                ³ ^
+³ [CF] ComboFix           ³ [FL] Flash Installers   ³ [J] Java                ³ ^
 ³ [RK] RKill              ³ [FF] Firefox            ³                         ³ ^
 ³ [GM] GMER               ³ [GC] Google Chrome      ³                         ³ ^
 ³ [MS] MS Securtity Ess.  ³                         ³                         ³ ^
-³ [SD] Spybot SD          ³ [FI] Foxit Reader       ³                         ³ ^
-³ [CC] CCleaner           ³ [QT] QTLite             ³                         ³ ^
-³ [AV] AVG Removers       ³ [RA] RealAlternative    ³                         ³ ^
-³                         ³ [IT] iTunes             ³                         ³ ^
+³ [A!] Avast!             ³ [FI] Foxit Reader       ³                         ³ ^
+³ [SD] Spybot SD          ³ [QT] QTLite             ³                         ³ ^
+³ [CC] CCleaner           ³ [RA] RealAlternative    ³                         ³ ^
+³ [AV] AVG Removers       ³ [IT] iTunes             ³                         ³ ^
 ³                         ³ [V]  VLC                ³                         ³ ^
 ³                         ³                         ³                         ³ ^
 ³                         ³ [UK] CrucialScanner     ³                         ³ ^
@@ -50,12 +50,12 @@ IF /I [%M%]==[ms] SET "TOTAL=4"
 IF /I [%M%]==[av] SET "TOTAL=4"
 IF /I [%M%]==[cc] SET "TOTAL=2"
 IF /I [%M%]==[sd] SET "TOTAL=2"
-IF /I [%M%]==[10] SET "TOTAL=3"
+IF /I [%M%]==[fl] SET "TOTAL=3"
 IF /I [%M%]==[ff] SET "TOTAL=4"
 IF /I [%M%]==[it] SET "TOTAL=2"
-IF /I [%M%]==[w]  SET "UPDATE_WHICH=%UPDATE_WEEKLY%"	& SET "TOTAL=15"
+IF /I [%M%]==[w]  SET "UPDATE_WHICH=%UPDATE_WEEKLY%"	& SET "TOTAL=16"
 IF /I [%M%]==[m]  SET "UPDATE_WHICH=%UPDATE_MONTHLY%"	& SET "TOTAL=19"
-IF /I [%M%]==[a]  SET "UPDATE_WHICH=%UPDATE_ALL%"	& SET "TOTAL=34"
+IF /I [%M%]==[a]  SET "UPDATE_WHICH=%UPDATE_ALL%"	& SET "TOTAL=35"
 
 IF "%UPDATE_WHICH%" NEQ "NONE" (
 	FOR %%I IN (%UPDATE_WHICH%) DO CALL :update_%%I
@@ -164,7 +164,7 @@ GOTO:EOF
 
 :: === MONTHLY UPDATES ======================================================================================================
 
-:update_10
+:update_FL
 :: Flash Installer (Firefox etc.)
 CALL :download "Flash Installer (Firefox etc.)" ^
 	"..\internet\install_flash_player.exe" ^
@@ -286,11 +286,11 @@ GOTO:EOF
 :update_SP
 :: Speccy Portable
 CALL :download "Speccy (portable)" ^
-	"..\utils\clean\speccy.zip" ^
+	"..\utils\info\speccy.zip" ^
 	"http://www.piriform.com/speccy/download/portable/downloadfile"
-ERASE /Q /F "..\utils\clean\speccy\*.*"
-7za x -y -o"..\utils\clean\speccy\" "..\utils\clean\speccy.zip"
-ERASE /Q /F "..\utils\clean\speccy.zip"
+ERASE /Q /F "..\utils\info\speccy\*.*"
+7za x -y -o"..\utils\info\speccy\" "..\utils\info\speccy.zip"
+ERASE /Q /F "..\utils\info\speccy.zip"
 GOTO:EOF
 
 :update_J

@@ -39,12 +39,12 @@ ECHO ^
 ³ TOOLS                              ³ [US] Shutdown [UR] Restart ³ [Q] Quit  ³ ^
 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄ´ ^
 ³                         ³                         ³                         ³ ^
-³ [MS] MSSE               ³ [FF] Firefox  [FX] XPIs ³ [AR] Adobe Reader       ³ ^
-³ [MU] MSSE Updates       ³ [GC] Google Chrome      ³ [FI] Foxit Reader       ³ ^
+³ [MS] MSSE [MU] -updates ³ [FF] Firefox  [FX] XPIs ³ [AR] Adobe Reader       ³ ^
+³ [A!] Avast!             ³ [GC] Google Chrome      ³ [FI] Foxit Reader       ³ ^
 ³ [R]  Remove Antivirus.. ³ [IE] IE8 / IE9          ³                         ³ ^
-³                         ³                         ³ [RA] RealAlternative    ³ ^
-³ [H]  HiJackThis         ³ [10] Flash Player       ³ [QT] QTLite             ³ ^
-³ [CF] ComboFix           ³ [J]  Java               ³ [IT] iTunes   [V] VLC   ³ ^
+³                         ³                         ³ [IT] iTunes   [V] VLC   ³ ^
+³ [H]  HiJackThis         ³ [FL] Flash Player       ³ [RA] RealAlternative    ³ ^
+³ [CF] ComboFix           ³ [J]  Java               ³ [QT] QTLite             ³ ^
 ³ [RK] RKill  [GM] GMER   ³                         ³                         ³ ^
 ³ [SD] Spybot [SI] Update ³ [CC] CCleaner [C] -run  ³ [LO] LibreOffice        ³ ^
 ³                         ³                         ³                         ³ ^
@@ -155,7 +155,7 @@ IF /I [%M%]==[ie] (
 	GOTO :menu
 )
 
-IF /I [%M%]==[10] CALL :flash								& GOTO :menu  REM * Flash Player
+IF /I [%M%]==[FL] CALL :flash								& GOTO :menu  REM * Flash Player
 IF /I [%M%]==[J] (
 	CLS & scripts\banner "Java"
 	ECHO  * Installing Java Runtime Environment...
@@ -188,8 +188,8 @@ IF /I [%M%]==[ar] (
 IF /I [%M%]==[fi] CALL :launch end_user\FoxitReader_enu.msi				& GOTO :menu  REM * Foxit Reader
 
 IF /I [%M%]==[cc] CALL :launch utils\clean\ccleaner.exe					& GOTO :menu  REM * CClenaer(Install)
-IF /I [%M%]==[c] IF [%WINBIT%]==[64] CALL :launch utils\clean\ccleaner\CCleaner64.exe	& GOTO :menu  REM * Speccy (64-Bit)
-IF /I [%M%]==[c] IF [%WINBIT%]==[32] CALL :launch utils\clean\ccleaner\CCleaner.exe	& GOTO :menu  REM * Speccy (32-Bit)
+IF /I [%M%]==[c] IF [%WINBIT%]==[64] CALL :launch utils\clean\ccleaner\CCleaner64.exe	& GOTO :menu  REM * CCleaner(64-Bit)
+IF /I [%M%]==[c] IF [%WINBIT%]==[32] CALL :launch utils\clean\ccleaner\CCleaner.exe	& GOTO :menu  REM * CCleaner(32-Bit)
 IF /I [%M%]==[cu] CALL :launch utils\clean\msicuu2\msicuu.exe				& GOTO :menu  REM * MSI CleanUp Util
 IF /I [%M%]==[af] CALL :launch utils\AutoFix.exe					& GOTO :menu  REM * AutoPlay Fix
 
@@ -210,8 +210,8 @@ IF /I [%M%]==[z]  CALL :launch utils\info\cpuz.exe					& GOTO :menu  REM * CPU-Z
 
 IF /I [%M%]==[uk] CALL :temp utils\info\CrucialUKScan.exe				& GOTO :menu  REM * CrucialScan
 
-IF /I [%M%]==[sp] IF [%WINBIT%]==[64] CALL :launch utils\clean\speccy\Speccy64.exe	& GOTO :menu  REM * Speccy (64-Bit)
-IF /I [%M%]==[sp] IF [%WINBIT%]==[32] CALL :launch utils\clean\speccy\Speccy.exe	& GOTO :menu  REM * Speccy (32-Bit)
+IF /I [%M%]==[sp] IF [%WINBIT%]==[64] CALL :launch utils\info\speccy\Speccy64.exe	& GOTO :menu  REM * Speccy (64-Bit)
+IF /I [%M%]==[sp] IF [%WINBIT%]==[32] CALL :launch utils\info\speccy\Speccy.exe		& GOTO :menu  REM * Speccy (32-Bit)
 IF /I [%M%]==[sx] COPY utils\info\SystemExplorer\*.* %TEMP% & START %TEMP%\SystemExplorer.exe & GOTO :menu  REM * System Explorer
 
 IF /I [%M%]==[it] IF [%WINBIT%]==[64] CALL :launch end_user\iTunes64Setup.exe		& GOTO :menu  REM * iTunes (64-Bit)
