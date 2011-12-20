@@ -366,24 +366,18 @@ GOTO:EOF
 :firefox
 
 CLS
-CALL scripts\banner "Install Firefox..."
-ECHO * Firefox Installer
-ECHO   (Do not open Firefox at end of installation)
-internet\Firefox_Setup.exe
+CALL scripts\banner "Install Firefox:"
+ECHO * Installing Firefox...
+internet\Firefox_Setup.exe /ini=%~d0\internet\Firefox_Setup.ini
 ECHO.
 
-SET /P "N=  Install AddOns? [y] "
-IF /I [%N%]==[y] (
-	ECHO * Installing addons...
-	CALL :ffxex
-)
+ECHO * Installing addons...
+CALL :ffxex
 
 ECHO.
-SET /P "N=  Install Adobe Flash Player? [y] "
-IF /I [%N%]==[y] (
-	ECHO * Installing Flash...
-	CALL :flash
-)
+ECHO * Installing Flash...
+CALL :flash
+
 GOTO :EOF
 
 :ffxex
@@ -402,7 +396,6 @@ REM Copy the XPI files to the extensions folder.
 
 ECHO.
 ECHO   Installing Addons...
-ECHO %PROGRAMS%
 ECHO.
 ECHO * AdBlock Plus
 COPY /Y internet\AdBlockPlus.xpi "%PROGRAMS%\Mozilla Firefox\extensions\{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi" > NUL
@@ -421,8 +414,8 @@ IF ERRORLEVEL 1 (
 )
 ECHO.
 ECHO * English-British Dictionary
-MD "%PROGRAMS%\Mozilla Firefox\dictionaries"
-DEL /Q "%PROGRAMS%\Mozilla Firefox\dictionaries\*.*"
+@MD "%PROGRAMS%\Mozilla Firefox\dictionaries"
+@DEL /Q "%PROGRAMS%\Mozilla Firefox\dictionaries\*.*"
 COPY /Y internet\en-GB@dictionaries.addons.mozilla.org\dictionaries\*.* "%PROGRAMS%\Mozilla Firefox\dictionaries\" > NUL
 IF ERRORLEVEL 1 (
 	ECHO ! Failed
