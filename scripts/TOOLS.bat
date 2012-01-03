@@ -40,13 +40,13 @@ ECHO ^
 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄ´ ^
 ³                         ³                         ³                         ³ ^
 ³ [MS] MSSE [MU] -updates ³ [FF] Firefox  [FX] XPIs ³ [AR] Adobe Reader       ³ ^
-³ [A!] Avast!             ³ [GC] Google Chrome      ³ [FI] Foxit Reader       ³ ^
-³ [R]  Remove Antivirus.. ³ [IE] IE8 / IE9          ³                         ³ ^
+³ [A!] Avast!             ³ [IE] IE8 / IE9          ³                         ³ ^
+³ [R]  Remove Antivirus.. ³                         ³                         ³ ^
 ³                         ³                         ³ [IT] iTunes   [V] VLC   ³ ^
 ³ [H]  HiJackThis         ³ [FL] Flash Player       ³ [RA] RealAlternative    ³ ^
 ³ [CF] ComboFix           ³ [J]  Java               ³ [QT] QTLite             ³ ^
 ³ [RK] RKill  [GM] GMER   ³                         ³                         ³ ^
-³ [SD] Spybot [SI] Update ³ [CC] CCleaner [C] -run  ³ [LO] LibreOffice        ³ ^
+³ [SD] Spybot [SI] update ³ [CC] CCleaner [C] -run  ³ [LO] LibreOffice        ³ ^
 ³                         ³                         ³                         ³ ^
 ³ %_SP_SLOT_1___________% ³ [IP] Reset TCP/IP       ³ [CU] MSI CleanUp Util.  ³ ^
 ³ %_SP_SLOT_2___________% ³ [WN] WirelessNetView    ³ [AF] AutoPlay Fix       ³ ^
@@ -144,8 +144,6 @@ IF /I [%M%]==[wu] (
 IF /I [%M%]==[ff] CALL :firefox								& GOTO :menu  REM * Firefox
 IF /I [%M%]==[fx] CALL :ffxex								& GOTO :menu  REM * Firefox AddOns
 
-IF /I [%M%]==[gc] CALL :launch internet\Google_Updater.exe				& GOTO :menu  REM * Google Chrome
-
 REM *** Internet Explorer 8 or 9 ***
 IF /I [%M%]==[ie] (
 	IF [%WINVER%]==[XP]			CALL :launch internet\IE8-WindowsXP-x86-ENU.exe
@@ -185,7 +183,6 @@ IF /I [%M%]==[ar] (
 	START "" end_user\AdbeRdr_en_US.exe "/sPB /rs /msi EULA_ACCEPT=YES REMOVE_PREVIOUS=YES /qn"
 	GOTO :menu
 )
-IF /I [%M%]==[fi] CALL :launch end_user\FoxitReader_enu.msi				& GOTO :menu  REM * Foxit Reader
 
 IF /I [%M%]==[cc] CALL :launch utils\clean\ccleaner.exe					& GOTO :menu  REM * CClenaer(Install)
 IF /I [%M%]==[c] IF [%WINBIT%]==[64] CALL :launch utils\clean\ccleaner\CCleaner64.exe	& GOTO :menu  REM * CCleaner(64-Bit)

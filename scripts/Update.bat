@@ -4,7 +4,7 @@ TITLE Tools - Update
 
 :: configure update options
 SET "UPDATE_WEEKLY=CF RK GM MS A! SD CC AV"
-SET "UPDATE_MONTHLY=FL FF GC UK Z FI QT RA IT V N SP J"
+SET "UPDATE_MONTHLY=FL FF UK Z QT RA IT V N SP J"
 SET "UPDATE_ALL=%UPDATE_WEEKLY% %UPDATE_MONTHLY%"
 
 :menu
@@ -14,21 +14,21 @@ CLS & ECHO ^
 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄ´ ^
 ³ [W]  All Weekly         ³ [M]  All Monthly                                  ³ ^
 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ ^
-³ [CF] ComboFix           ³ [FL] Flash Installers   ³ [J] Java                ³ ^
+³ [CF] ComboFix           ³ [FL] Flash Installers   ³                         ³ ^
 ³ [RK] RKill              ³ [FF] Firefox            ³                         ³ ^
-³ [GM] GMER               ³ [GC] Google Chrome      ³                         ³ ^
+³ [GM] GMER               ³                         ³                         ³ ^
 ³ [MS] MS Securtity Ess.  ³                         ³                         ³ ^
-³ [A!] Avast!             ³ [FI] Foxit Reader       ³                         ³ ^
-³ [SD] Spybot SD          ³ [QT] QTLite             ³                         ³ ^
-³ [CC] CCleaner           ³ [RA] RealAlternative    ³                         ³ ^
-³ [AV] AVG Removers       ³ [IT] iTunes             ³                         ³ ^
-³                         ³ [V]  VLC                ³                         ³ ^
+³ [A!] Avast!             ³ [QT] QTLite             ³                         ³ ^
+³ [SD] Spybot SD          ³ [RA] RealAlternative    ³                         ³ ^
+³ [CC] CCleaner           ³ [IT] iTunes             ³                         ³ ^
+³ [AV] AVG Removers       ³ [V]  VLC                ³                         ³ ^
 ³                         ³                         ³                         ³ ^
 ³                         ³ [UK] CrucialScanner     ³                         ³ ^
 ³                         ³ [SP] Speccy             ³                         ³ ^
 ³                         ³ [Z]  CPU-Z              ³                         ³ ^
 ³                         ³                         ³                         ³ ^
 ³                         ³ [N]  Norton Removal     ³                         ³ ^
+³                         ³ [J] Java                ³                         ³ ^
 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ ^
 ³ [A] Download All        ³ [AP] Upate AutoPatcher                            ³ ^
 ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
@@ -54,8 +54,8 @@ IF /I [%M%]==[fl] SET "TOTAL=6"
 IF /I [%M%]==[ff] SET "TOTAL=4"
 IF /I [%M%]==[it] SET "TOTAL=2"
 IF /I [%M%]==[w]  SET "UPDATE_WHICH=%UPDATE_WEEKLY%"	& SET "TOTAL=19"
-IF /I [%M%]==[m]  SET "UPDATE_WHICH=%UPDATE_MONTHLY%"	& SET "TOTAL=19"
-IF /I [%M%]==[a]  SET "UPDATE_WHICH=%UPDATE_ALL%"	& SET "TOTAL=38"
+IF /I [%M%]==[m]  SET "UPDATE_WHICH=%UPDATE_MONTHLY%"	& SET "TOTAL=17"
+IF /I [%M%]==[a]  SET "UPDATE_WHICH=%UPDATE_ALL%"	& SET "TOTAL=36"
 
 IF "%UPDATE_WHICH%" NEQ "NONE" (
 	FOR %%I IN (%UPDATE_WHICH%) DO CALL :update_%%I
@@ -211,13 +211,6 @@ CALL :download "Firefox - Web of Trust" ^
 	"https://addons.mozilla.org/en-US/firefox/downloads/latest/3456/addon-3456-latest.xpi"
 GOTO:EOF
 
-:update_GC
-:: Google Chrome
-CALL :download "Google Chrome (All Users) via Google Pack" ^
-	"..\internet\Google_Updater.exe" ^
-	 "http://www.google.com/pack/download/Google_Updater?hl=en&stub=on&ciNum=0&file=Google_Updater.exe"
-GOTO:EOF
-
 :update_UK
 :: Crucial Scanner
 CALL :download "Crucial Scanner" ^
@@ -241,13 +234,6 @@ CALL :download "CPU-Z" ^
 7za x -y -o"..\utils\info\" "..\utils\info\cpuz.zip" >NUL
 Erase /F /Q "..\utils\info\cpuz_readme.txt"
 Erase /F /Q "..\utils\info\cpuz.zip"
-GOTO:EOF
-
-:update_FI
-:: FoxitReader
-CALL :download "Foxit Reader" ^
-	"..\end_user\FoxitReader_enu.msi" ^
-	"http://cdn01.foxitsoftware.com/pub/foxit/reader/desktop/win/4.x/4.3/enu/FoxitReader431_enu.msi"
 GOTO:EOF
 
 :update_QT
