@@ -196,7 +196,7 @@ IF /I [%M%]==[v]  CALL :launch end_user\vlc-win32.exe					& GOTO :menu  REM * VL
 
 IF /I [%M%]==[tb] CALL :launch end_user\Thunderbird_Setup.exe				& GOTO :menu  REM * Thunderbird
 
-IF /I [%M%]==[lo] CALL :launch end_user\LibreOffice\setup.exe				& GOTO :menu  REM * LibreOffice
+IF /I [%M%]==[lo] CALL :launch end_user\LibO_Win_x86_install_multi.msi			& GOTO :menu  REM * LibreOffice
 
 IF /I [%M%]==[ts] CALL :launch utils\clean\TreeSizeFree.exe				& GOTO :menu  REM * TreeSize
 IF /I [%M%]==[w]  IF [%WINBIT%]==[64] CALL :launch utils\winrar-x64-393.exe		& GOTO :menu  REM * WinRAR (64-Bit)
