@@ -4,7 +4,7 @@ TITLE Tools - Update
 
 :: configure update options
 SET "UPDATE_WEEKLY=CF RK GM MS A! SD CC AV"
-SET "UPDATE_MONTHLY=FL FF UK Z QT RA IT V N SP J"
+SET "UPDATE_MONTHLY=FL FF UK Z IT V N SP J"
 SET "UPDATE_ALL=%UPDATE_WEEKLY% %UPDATE_MONTHLY%"
 
 :menu
@@ -18,8 +18,8 @@ CLS & ECHO ^
 ³ [RK] RKill              ³ [FF] Firefox            ³                         ³ ^
 ³ [GM] GMER               ³                         ³                         ³ ^
 ³ [MS] MS Securtity Ess.  ³                         ³                         ³ ^
-³ [A!] Avast!             ³ [QT] QTLite             ³                         ³ ^
-³ [SD] Spybot SD          ³ [RA] RealAlternative    ³                         ³ ^
+³ [A!] Avast!             ³                         ³                         ³ ^
+³ [SD] Spybot SD          ³                         ³                         ³ ^
 ³ [CC] CCleaner           ³ [IT] iTunes             ³                         ³ ^
 ³ [AV] AVG Removers       ³ [V]  VLC                ³                         ³ ^
 ³                         ³                         ³                         ³ ^
@@ -54,8 +54,8 @@ IF /I [%M%]==[fl] SET "TOTAL=6"
 IF /I [%M%]==[ff] SET "TOTAL=4"
 IF /I [%M%]==[it] SET "TOTAL=2"
 IF /I [%M%]==[w]  SET "UPDATE_WHICH=%UPDATE_WEEKLY%"	& SET "TOTAL=19"
-IF /I [%M%]==[m]  SET "UPDATE_WHICH=%UPDATE_MONTHLY%"	& SET "TOTAL=17"
-IF /I [%M%]==[a]  SET "UPDATE_WHICH=%UPDATE_ALL%"	& SET "TOTAL=36"
+IF /I [%M%]==[m]  SET "UPDATE_WHICH=%UPDATE_MONTHLY%"	& SET "TOTAL=15"
+IF /I [%M%]==[a]  SET "UPDATE_WHICH=%UPDATE_ALL%"	& SET "TOTAL=34"
 
 IF "%UPDATE_WHICH%" NEQ "NONE" (
 	FOR %%I IN (%UPDATE_WHICH%) DO CALL :update_%%I
@@ -234,21 +234,6 @@ CALL :download "CPU-Z" ^
 7za x -y -o"..\utils\info\" "..\utils\info\cpuz.zip" >NUL
 Erase /F /Q "..\utils\info\cpuz_readme.txt"
 Erase /F /Q "..\utils\info\cpuz.zip"
-GOTO:EOF
-
-:update_QT
-:: QTLite
-CALL :download "QTLite" ^
-	"..\end_user\qtlite.exe" ^
-	"http://fileforum.betanews.com/download/QT-Lite/1182968126/1" ^
-	"http://fileforum\.betanews\.com/sendfile/.*?/QT_Lite_\d{3}.exe"
-GOTO:EOF
-
-:update_RA
-:: RealAlternativeLite
-CALL :download "RealAlternative Lite" ^
-	"..\end_user\realaltlite.exe" ^
-	"http://www.free-codecs.com/download_soft.php?d=5687&s=65"
 GOTO:EOF
 
 :update_IT

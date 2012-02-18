@@ -43,8 +43,8 @@ ECHO ^
 ³ [A!] Avast!             ³ [IE] IE8 / IE9          ³                         ³ ^
 ³ [R]  Remove Antivirus.. ³                         ³                         ³ ^
 ³                         ³                         ³ [IT] iTunes   [V] VLC   ³ ^
-³ [H]  HiJackThis         ³ [FL] Flash Player       ³ [RA] RealAlternative    ³ ^
-³ [CF] ComboFix           ³ [J]  Java               ³ [QT] QTLite             ³ ^
+³ [H]  HiJackThis         ³ [FL] Flash Player       ³                         ³ ^
+³ [CF] ComboFix           ³ [J]  Java               ³                         ³ ^
 ³ [RK] RKill  [GM] GMER   ³                         ³                         ³ ^
 ³ [SD] Spybot [SI] update ³ [CC] CCleaner [C] -run  ³ [LO] LibreOffice        ³ ^
 ³                         ³                         ³                         ³ ^
@@ -192,8 +192,6 @@ IF /I [%M%]==[af] CALL :launch utils\AutoFix.exe					& GOTO :menu  REM * AutoPla
 
 IF /I [%M%]==[wn] CALL :launch utils\info\wnview\WirelessNetView.exe			& GOTO :menu  REM * WirelessKeyView
 
-IF /I [%M%]==[ra] CALL :launch end_user\realaltlite.exe					& GOTO :menu  REM * RealAlternative
-IF /I [%M%]==[qt] CALL :launch end_user\qtlite.exe					& GOTO :menu  REM * QuickTime Lites
 IF /I [%M%]==[v]  CALL :launch end_user\vlc-win32.exe					& GOTO :menu  REM * VLC
 
 IF /I [%M%]==[tb] CALL :launch end_user\Thunderbird_Setup.exe				& GOTO :menu  REM * Thunderbird
