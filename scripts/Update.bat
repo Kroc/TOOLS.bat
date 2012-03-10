@@ -252,8 +252,8 @@ GOTO:EOF
 :: VideoLan
 CALL :download "VLC" ^
 	"..\end_user\vlc-win32.exe" ^
-	"http://www.free-codecs.com/VideoLAN_download.htm" ^
-	"http://www\.free-codecs\.com/download_soft\.php?d=\d{4}&s=171"
+	"http://sourceforge.net/projects/vlc/files/latest/download?source=files" ^
+	"http://downloads.sourceforge\.net/project/vlc/.*?/win32/vlc-.*?-win32\.exe?r=&ts=\d+&use_mirror=kent"
 GOTO:EOF
 
 :update_N
