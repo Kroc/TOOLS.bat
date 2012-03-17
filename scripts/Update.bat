@@ -3,7 +3,7 @@ COLOR 4E
 TITLE Tools - Update
 
 :: configure update options
-SET "UPDATE_WEEKLY=CF RK GM MS A! SD CC AV"
+SET "UPDATE_WEEKLY=CF RK GM MS A! CC AV"
 SET "UPDATE_MONTHLY=FL FF UK Z IT V N SP J"
 SET "UPDATE_ALL=%UPDATE_WEEKLY% %UPDATE_MONTHLY%"
 
@@ -19,16 +19,16 @@ CLS & ECHO ^
 ³ [GM] GMER               ³                         ³                         ³ ^
 ³ [MS] MS Securtity Ess.  ³                         ³                         ³ ^
 ³ [A!] Avast!             ³                         ³                         ³ ^
-³ [SD] Spybot SD          ³                         ³                         ³ ^
-³ [CC] CCleaner           ³ [IT] iTunes             ³                         ³ ^
-³ [AV] AVG Removers       ³ [V]  VLC                ³                         ³ ^
+³ [CC] CCleaner           ³                         ³                         ³ ^
+³ [AV] AVG Removers       ³ [IT] iTunes             ³                         ³ ^
+³                         ³ [V]  VLC                ³                         ³ ^
 ³                         ³                         ³                         ³ ^
 ³                         ³ [UK] CrucialScanner     ³                         ³ ^
 ³                         ³ [SP] Speccy             ³                         ³ ^
 ³                         ³ [Z]  CPU-Z              ³                         ³ ^
 ³                         ³                         ³                         ³ ^
 ³                         ³ [N]  Norton Removal     ³                         ³ ^
-³                         ³ [J] Java                ³                         ³ ^
+³                         ³ [J]  Java               ³                         ³ ^
 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ ^
 ³ [A] Download All        ³ [AP] Upate AutoPatcher                            ³ ^
 ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
@@ -49,13 +49,12 @@ IF /I [%M%]==[ap] START "" "..\updates\autopatcher\apup.exe" & GOTO :menu
 IF /I [%M%]==[ms] SET "TOTAL=4"
 IF /I [%M%]==[av] SET "TOTAL=4"
 IF /I [%M%]==[cc] SET "TOTAL=2"
-IF /I [%M%]==[sd] SET "TOTAL=2"
 IF /I [%M%]==[fl] SET "TOTAL=6"
 IF /I [%M%]==[ff] SET "TOTAL=4"
 IF /I [%M%]==[it] SET "TOTAL=2"
-IF /I [%M%]==[w]  SET "UPDATE_WHICH=%UPDATE_WEEKLY%"	& SET "TOTAL=19"
+IF /I [%M%]==[w]  SET "UPDATE_WHICH=%UPDATE_WEEKLY%"	& SET "TOTAL=17"
 IF /I [%M%]==[m]  SET "UPDATE_WHICH=%UPDATE_MONTHLY%"	& SET "TOTAL=15"
-IF /I [%M%]==[a]  SET "UPDATE_WHICH=%UPDATE_ALL%"	& SET "TOTAL=34"
+IF /I [%M%]==[a]  SET "UPDATE_WHICH=%UPDATE_ALL%"	& SET "TOTAL=32"
 
 IF "%UPDATE_WHICH%" NEQ "NONE" (
 	FOR %%I IN (%UPDATE_WHICH%) DO CALL :update_%%I
@@ -136,18 +135,6 @@ CALL :download "AVGRemover Full 2011 (64-bit)" ^
 	"http://download\.avg\.com/filedir/util/support/avg_remover_stf_x64_2011_\d+\.exe"
 GOTO:EOF
 
-:update_SD
-:: Spybot Search Destroy
-CALL :download "Spybot Search and Destroy" ^
-	"..\anti_spyware\spybotsd.exe" ^
-	"http://www.safer-networking.org/en/ownmirrors1/index.html" ^
-	"http://www\.spybotupdates\.com/files/spybotsd\d{3}\.exe"
-:: Spybot Includes
-CALL :download "Spybot Offline Updates" ^
-	"..\anti_spyware\spybotsd_includes.exe" ^
-	"http://www.spybotupdates.biz/updates/files/spybotsd_includes.exe"
-GOTO:EOF
-
 :update_CC
 :: CCleaner Clim
 CALL :download "CCleaner (slim)" ^
@@ -218,13 +205,6 @@ CALL :download "Crucial Scanner" ^
 	"http://images.crucial.com/drivers/CrucialUKScan.exe"
 GOTO:EOF
 
-:update_SA
-:: SiteAdvisor
-CALL :download "McAfee SiteAdvisor" ^
-	"..\internet\saSetup.exe" ^
-	"https://sadownload.mcafee.com/products/SA/Website/saSetup.exe"
-GOTO:EOF
-
 :update_Z
 :: CPU-Z
 CALL :download "CPU-Z" ^
@@ -253,7 +233,7 @@ GOTO:EOF
 CALL :download "VLC" ^
 	"..\end_user\vlc-win32.exe" ^
 	"http://sourceforge.net/projects/vlc/files/latest/download?source=files" ^
-	"http://downloads.sourceforge\.net/project/vlc/.*?/win32/vlc-.*?-win32\.exe?r=&ts=\d+&use_mirror=kent"
+	"http://downloads\.sourceforge\.net/project/vlc/.*?/win32/vlc-.*?-win32\.exe\?r=&amp;ts=\d+&amp;use_mirror=[A-Za-z]+"
 GOTO:EOF
 
 :update_N
@@ -317,6 +297,13 @@ IF %ERRORLEVEL% NEQ 0 (
 	ECHO.
 	ECHO -------------------------------------------------------------------------------
 	ECHO An error occured
+	ECHO.
+	ECHO Parameters:
+	ECHO   1:%1
+	ECHO   2:%2
+	ECHO   3:%3
+	ECHO   4:%4
+	ECHO URL:%URL%
 	ECHO.
 	PAUSE
 ) ELSE (

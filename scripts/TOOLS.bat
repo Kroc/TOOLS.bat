@@ -39,21 +39,21 @@ ECHO ^
 ³ TOOLS                              ³ [US] Shutdown [UR] Restart ³ [Q] Quit  ³ ^
 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄ´ ^
 ³                         ³                         ³                         ³ ^
-³ [MS] MSSE [MU] -updates ³ [FF] Firefox  [FX] XPIs ³ [AR] Adobe Reader       ³ ^
-³ [A!] Avast!             ³ [IE] IE8 / IE9          ³                         ³ ^
-³ [R]  Remove Antivirus.. ³                         ³                         ³ ^
-³                         ³                         ³ [IT] iTunes   [V] VLC   ³ ^
-³ [H]  HiJackThis         ³ [FL] Flash Player       ³                         ³ ^
-³ [CF] ComboFix           ³ [J]  Java               ³                         ³ ^
-³ [RK] RKill  [GM] GMER   ³                         ³                         ³ ^
-³ [SD] Spybot [SI] update ³ [CC] CCleaner [C] -run  ³ [LO] LibreOffice        ³ ^
+³ [MS] MSSE   [A!] Avast! ³ [FF] Firefox  [FX] XPIs ³ [LO] LibreOffice        ³ ^
+³ [R]  Remove Antivirus.. ³ [IE] IE8 / IE9          ³ [IT] iTunes   [V] VLC   ³ ^
+³                         ³                         ³                         ³ ^
+³ [H]  HiJackThis         ³ [FL] Flash Player       ³ [TS] TreeSize [W] RAR   ³ ^
+³ [CF] ComboFix           ³ [AR] Adobe Reader       ³ [UK] Crucial  [Z] CPU-Z ³ ^
+³ [RK] RKill  [GM] GMER   ³ [J]  Java               ³ [SP] Speccy             ³ ^
+³                         ³                         ³                         ³ ^
+³ [CC] CCleaner [C] -run  ³                         ³                         ³ ^
 ³                         ³                         ³                         ³ ^
 ³ %_SP_SLOT_1___________% ³ [IP] Reset TCP/IP       ³ [CU] MSI CleanUp Util.  ³ ^
 ³ %_SP_SLOT_2___________% ³ [WN] WirelessNetView    ³ [AF] AutoPlay Fix       ³ ^
 ³                         ³                         ³                         ³ ^
-³ [AP] AutoPatcher        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ [TS] TreeSize [W] RAR   ³ ^
-³ [WU] Fix XP WinUpdate   ³                         ³ [UK] Crucial  [Z] CPU-Z ³ ^
-³      (Repair Install)   ³ [P]  Passwords...       ³ [SP] Speccy             ³ ^
+³ [AP] AutoPatcher        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´                         ³ ^
+³ [WU] Fix XP WinUpdate   ³                         ³                         ³ ^
+³      (Repair Install)   ³ [P]  Passwords...       ³                         ³ ^
 ³                         ³                         ³                         ³ ^
 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ ^
 ³ [U] Download Updates...            ³    [M] msconfig [A] appwiz [I] inetcpl ³ ^
@@ -77,6 +77,7 @@ IF /I [%M%]==[u] (
 ::---------------------------------------------------------------------------------------------------------------------------
 REM *** Remove ... ***
 IF /I [%M%]==[r]  GOTO :remove
+IF /I [%M%]==[a!] CALL :launch anti_virus\Avast.exe					& GOTO :menu  REM * Avast!
 IF /I [%M%]==[ms] CALL :launch anti_virus\msse.bat					& GOTO :menu  REM * MSSE
 
 REM * MSSE Updates
@@ -90,8 +91,6 @@ IF /I [%M%]==[mu] (
 	GOTO :menu
 )
 
-IF /I [%M%]==[a!] CALL :launch anti_virus\Avast.exe					& GOTO :menu  REM * Avast!
-
 
 :: Anti Spyware
 ::---------------------------------------------------------------------------------------------------------------------------
@@ -99,8 +98,6 @@ IF /I [%M%]==[h]  CALL :launch anti_spyware\Removers\HiJackThis.exe			& GOTO :me
 IF /I [%M%]==[cf] CALL :temp   anti_spyware\Removers\ComboFix.exe			& GOTO :final REM * ComboFix
 IF /I [%M%]==[rk] CALL :temp   anti_spyware\Removers\rkill.exe				& GOTO :menu  REM * RKill
 IF /I [%M%]==[gm] CALL :temp   anti_spyware\Removers\gmer.exe				& GOTO :menu  REM * GMER
-IF /I [%M%]==[sd] CALL :launch anti_spyware\spybotsd.exe				& GOTO :menu  REM * Spybot
-IF /I [%M%]==[si] CALL :launch anti_spyware\spybotsd_includes.exe			& GOTO :menu  REM * Spybot Inlcudes
 
 
 :: Updates
@@ -112,8 +109,8 @@ IF [%WINVER%]==[VISTA] CALL :launch updates\Vista\Vista-SP1.exe				& GOTO :menu 
 )
 
 IF /I [%M%]==[sp2] (
-IF [%WINVER%]==[VISTA] CALL :launch updates\Vista\Vista-SP2.exe				& GOTO :menu  REM * Vista SP2
-IF [%WINVER%]==[XP]    CALL :launch updates\XP\XP-SP2.exe				& GOTO :menu  REM * XP SP2
+	IF [%WINVER%]==[VISTA] CALL :launch updates\Vista\Vista-SP2.exe			& GOTO :menu  REM * Vista SP2
+	IF [%WINVER%]==[XP]    CALL :launch updates\XP\XP-SP2.exe			& GOTO :menu  REM * XP SP2
 )
 
 IF /I [%M%]==[sp3]     CALL :launch updates\XP\XP-SP3.exe				& GOTO :menu  REM * XP SP3
@@ -180,7 +177,8 @@ IF /I [%M%]==[p]  GOTO :passwords
 REM * Adobe Reader
 IF /I [%M%]==[ar] (
 	REM Automated install. Removes Adobe v8/9 for you.
-	START "" end_user\AdbeRdr_en_US.exe "/sPB /rs /msi EULA_ACCEPT=YES REMOVE_PREVIOUS=YES /qn"
+	CALL :temp end_user\AdbeRdr_en_US.exe "/sPB /rs /msi EULA_ACCEPT=YES REMOVE_PREVIOUS=YES /qn"
+	REM START "" end_user\AdbeRdr_en_US.exe "/sPB /rs /msi EULA_ACCEPT=YES REMOVE_PREVIOUS=YES /qn"
 	GOTO :menu
 )
 
@@ -444,7 +442,7 @@ CLS
 CALL scripts\banner "Launching via temporary file..."
 CALL :get_temp_file TEMP_FILE
 COPY "%~1" "%TEMP_FILE%.exe"
-START "" /D"%TEMP%" "%TEMP_FILE%.exe"
+START "" /D"%TEMP%" "%TEMP_FILE%.exe" %~2
 GOTO:EOF
 
 ::===========================================================================================================================
