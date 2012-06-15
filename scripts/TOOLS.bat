@@ -203,9 +203,9 @@ IF /I [%M%]==[z]  CALL :launch utils\info\cpuz.exe					& GOTO :menu  REM * CPU-Z
 
 IF /I [%M%]==[uk] CALL :temp utils\info\CrucialUKScan.exe				& GOTO :menu  REM * CrucialScan
 
-IF /I [%M%]==[sp] IF [%WINBIT%]==[64] CALL :launch utils\info\speccy\Speccy64.exe	& GOTO :menu  REM * Speccy (64-Bit)
-IF /I [%M%]==[sp] IF [%WINBIT%]==[32] CALL :launch utils\info\speccy\Speccy.exe		& GOTO :menu  REM * Speccy (32-Bit)
-IF /I [%M%]==[sx] COPY utils\info\SystemExplorer\*.* %TEMP% & START %TEMP%\SystemExplorer.exe & GOTO :menu  REM * System Explorer
+IF /I [%M%]==[sp] IF [%WINBIT%]==[64] CALL :tempdir utils\info\speccy Speccy64.exe	& GOTO :menu  REM * Speccy (64-Bit)
+IF /I [%M%]==[sp] IF [%WINBIT%]==[32] CALL :tempdir utils\info\speccy Speccy.exe	& GOTO :menu  REM * Speccy (32-Bit)
+IF /I [%M%]==[sx] CALL :tempdir utils\info\SX SystemExplorer.exe			& GOTO :menu  REM * System Explorer
 
 IF /I [%M%]==[it] IF [%WINBIT%]==[64] CALL :launch end_user\iTunes64Setup.exe		& GOTO :menu  REM * iTunes (64-Bit)
 IF /I [%M%]==[it] IF [%WINBIT%]==[32] CALL :launch end_user\iTunesSetup.exe		& GOTO :menu  REM * iTunes (32-Bit)
@@ -443,6 +443,16 @@ CALL scripts\banner "Launching via temporary file..."
 CALL :get_temp_file TEMP_FILE
 COPY "%~1" "%TEMP_FILE%.exe"
 START "" /D"%TEMP%" "%TEMP_FILE%.exe" %~2
+GOTO:EOF
+
+::launch an app by copying a directory to a temporary folder
+:tempdir
+CLS
+CALL scripts\banner "Launching via temporary folder..."
+SET "TMPDIR=tools-%RANDOM%-%TIME:~6,5%"
+MKDIR %TMPDIR%
+XCOPY /Y /E "%~1" %TMPDIR%
+START "" /D"%TMPDIR%" "%~2"
 GOTO:EOF
 
 ::===========================================================================================================================
