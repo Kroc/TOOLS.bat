@@ -45,8 +45,8 @@ ECHO ^
 ³ [H]  HiJackThis         ³ [FL] Flash Player       ³ [TS] TreeSize [W] RAR   ³ ^
 ³ [CF] ComboFix           ³ [AR] Adobe Reader       ³ [UK] Crucial  [Z] CPU-Z ³ ^
 ³ [RK] RKill  [GM] GMER   ³ [J]  Java               ³ [SP] Speccy             ³ ^
-³                         ³                         ³                         ³ ^
-³ [CC] CCleaner [C] -run  ³                         ³                         ³ ^
+³                         ³                         ³ [SX] SystemExplorer     ³ ^
+³ [CC] CCleaner [C] -run  ³                         ³ [BS] BlueScreenView     ³ ^
 ³                         ³                         ³                         ³ ^
 ³ %_SP_SLOT_1___________% ³ [IP] Reset TCP/IP       ³ [CU] MSI CleanUp Util.  ³ ^
 ³ %_SP_SLOT_2___________% ³ [WN] WirelessNetView    ³ [AF] AutoPlay Fix       ³ ^
@@ -206,6 +206,7 @@ IF /I [%M%]==[uk] CALL :temp utils\info\CrucialUKScan.exe				& GOTO :menu  REM *
 IF /I [%M%]==[sp] IF [%WINBIT%]==[64] CALL :tempdir utils\info\speccy Speccy64.exe	& GOTO :menu  REM * Speccy (64-Bit)
 IF /I [%M%]==[sp] IF [%WINBIT%]==[32] CALL :tempdir utils\info\speccy Speccy.exe	& GOTO :menu  REM * Speccy (32-Bit)
 IF /I [%M%]==[sx] CALL :tempdir utils\info\SX SystemExplorer.exe			& GOTO :menu  REM * System Explorer
+IF /I [%M%]==[bs] CALL :launch utils\info\bluescreenview\BlueScreenView.exe		& GOTO :menu  REM * BlueScreenView
 
 IF /I [%M%]==[it] IF [%WINBIT%]==[64] CALL :launch end_user\iTunes64Setup.exe		& GOTO :menu  REM * iTunes (64-Bit)
 IF /I [%M%]==[it] IF [%WINBIT%]==[32] CALL :launch end_user\iTunesSetup.exe		& GOTO :menu  REM * iTunes (32-Bit)
