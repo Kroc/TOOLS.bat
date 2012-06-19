@@ -449,7 +449,7 @@ GOTO:EOF
 :tempdir
 CLS
 CALL scripts\banner "Launching via temporary folder..."
-SET "TMPDIR=tools-%RANDOM%-%TIME:~6,5%"
+SET "TMPDIR=%TEMP%\tools-%RANDOM%-%TIME:~6,5%"
 MKDIR %TMPDIR%
 XCOPY /Y /E "%~1" %TMPDIR%
 START "" /D"%TMPDIR%" "%~2"
