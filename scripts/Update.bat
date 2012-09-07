@@ -4,7 +4,7 @@ TITLE Tools - Update
 
 :: configure update options
 SET "UPDATE_WEEKLY=CF RK GM MS A! CC AV"
-SET "UPDATE_MONTHLY=FL FF UK Z IT V N SP J"
+SET "UPDATE_MONTHLY=FL FF UK Z IT V N SP"
 SET "UPDATE_ALL=%UPDATE_WEEKLY% %UPDATE_MONTHLY%"
 
 :menu
@@ -28,7 +28,7 @@ CLS & ECHO ^
 ³                         ³ [Z]  CPU-Z              ³                         ³ ^
 ³                         ³                         ³                         ³ ^
 ³                         ³ [N]  Norton Removal     ³                         ³ ^
-³                         ³ [J]  Java               ³                         ³ ^
+³                         ³                         ³                         ³ ^
 ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ ^
 ³ [A] Download All        ³ [AP] Upate AutoPatcher                            ³ ^
 ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
@@ -49,12 +49,12 @@ IF /I [%M%]==[ap] START "" "..\updates\autopatcher\apup.exe" & GOTO :menu
 IF /I [%M%]==[ms] SET "TOTAL=4"
 IF /I [%M%]==[av] SET "TOTAL=4"
 IF /I [%M%]==[cc] SET "TOTAL=2"
-IF /I [%M%]==[fl] SET "TOTAL=6"
+IF /I [%M%]==[fl] SET "TOTAL=3"
 IF /I [%M%]==[ff] SET "TOTAL=4"
 IF /I [%M%]==[it] SET "TOTAL=2"
 IF /I [%M%]==[w]  SET "UPDATE_WHICH=%UPDATE_WEEKLY%"	& SET "TOTAL=17"
-IF /I [%M%]==[m]  SET "UPDATE_WHICH=%UPDATE_MONTHLY%"	& SET "TOTAL=15"
-IF /I [%M%]==[a]  SET "UPDATE_WHICH=%UPDATE_ALL%"	& SET "TOTAL=32"
+IF /I [%M%]==[m]  SET "UPDATE_WHICH=%UPDATE_MONTHLY%"	& SET "TOTAL=11"
+IF /I [%M%]==[a]  SET "UPDATE_WHICH=%UPDATE_ALL%"	& SET "TOTAL=28"
 
 IF "%UPDATE_WHICH%" NEQ "NONE" (
 	FOR %%I IN (%UPDATE_WHICH%) DO CALL :update_%%I
@@ -153,26 +153,17 @@ GOTO:EOF
 
 :update_FL
 :: Flash Installer (Firefox etc.)
-CALL :download "Flash Installer (Firefox etc.) 32-Bit" ^
-	"..\internet\install_flash_player_32bit.exe" ^
-	http://download.macromedia.com/pub/flashplayer/current/install_flash_player_32bit.exe
-CALL :download "Flash Installer (Firefox etc.) 64-Bit" ^
-	"..\internet\install_flash_player_64bit.exe" ^
-	http://download.macromedia.com/pub/flashplayer/current/install_flash_player_64bit.exe
+CALL :download "Flash Installer (Firefox etc.)" ^
+	"..\internet\install_flash_player.exe" ^
+	http://download.macromedia.com/pub/flashplayer/current/support/install_flash_player.exe
 :: Flash Installer (IE)
-CALL :download "Flash Installer (IE) 32-Bit" ^
-	"..\internet\install_flash_player_ax_32bit.exe" ^
-	http://download.macromedia.com/pub/flashplayer/current/install_flash_player_ax_32bit.exe
-CALL :download "Flash Installer (IE) 64-Bit" ^
-	"..\internet\install_flash_player_ax_64bit.exe" ^
-	http://download.macromedia.com/pub/flashplayer/current/install_flash_player_ax_64bit.exe
+CALL :download "Flash Installer (IE)" ^
+	"..\internet\install_flash_player_ax.exe" ^
+	http://download.macromedia.com/pub/flashplayer/current/support/install_flash_player_ax.exe
 :: Flash Uninstaller
-CALL :download "Flash Uninstaller (32-Bit)" ^
-	"..\internet\uninstall_flash_player_32bit.exe" ^
-	http://download.macromedia.com/pub/flashplayer/current/uninstall_flash_player_32bit.exe
-CALL :download "Flash Uninstaller (64-Bit)" ^
-	"..\internet\uninstall_flash_player_64bit.exe" ^
-	http://download.macromedia.com/pub/flashplayer/current/uninstall_flash_player_64bit.exe
+CALL :download "Flash Uninstaller" ^
+	"..\internet\uninstall_flash_player.exe" ^
+	http://download.macromedia.com/get/flashplayer/current/support/uninstall_flash_player.exe
 GOTO:EOF
 
 :update_FF
@@ -253,12 +244,6 @@ ERASE /Q /F "..\utils\info\speccy\*.*"
 ERASE /Q /F "..\utils\info\speccy.zip"
 GOTO:EOF
 
-:update_J
-:: Java
-CALL :download "Java" ^
-	"..\internet\jre.exe" ^
-	"http://javadl.sun.com/webapps/download/AutoDL?BundleId=48343"
-GOTO:EOF
 
 ::===========================================================================================================================
 ::functions

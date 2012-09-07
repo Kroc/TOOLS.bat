@@ -44,7 +44,7 @@ ECHO ^
 ³                         ³                         ³                         ³ ^
 ³ [H]  HiJackThis         ³ [FL] Flash Player       ³ [TS] TreeSize [W] RAR   ³ ^
 ³ [CF] ComboFix           ³ [AR] Adobe Reader       ³ [UK] Crucial  [Z] CPU-Z ³ ^
-³ [RK] RKill  [GM] GMER   ³ [J]  Java               ³ [SP] Speccy             ³ ^
+³ [RK] RKill  [GM] GMER   ³                         ³ [SP] Speccy             ³ ^
 ³                         ³                         ³ [SX] SystemExplorer     ³ ^
 ³ [CC] CCleaner [C] -run  ³                         ³ [BS] BlueScreenView     ³ ^
 ³                         ³                         ³                         ³ ^
@@ -151,12 +151,6 @@ IF /I [%M%]==[ie] (
 )
 
 IF /I [%M%]==[FL] CALL :flash								& GOTO :menu  REM * Flash Player
-IF /I [%M%]==[J] (
-	CLS & scripts\banner "Java"
-	ECHO  * Installing Java Runtime Environment...
-	internet\jre.exe /s
-	GOTO :menu
-)
 
 REM *** Reset TCP/IP ***
 IF /I [%M%]==[ip] (
@@ -178,13 +172,12 @@ REM * Adobe Reader
 IF /I [%M%]==[ar] (
 	REM Automated install. Removes Adobe v8/9 for you.
 	CALL :temp end_user\AdbeRdr_en_US.exe "/sPB /rs /msi EULA_ACCEPT=YES REMOVE_PREVIOUS=YES /qn"
-	REM START "" end_user\AdbeRdr_en_US.exe "/sPB /rs /msi EULA_ACCEPT=YES REMOVE_PREVIOUS=YES /qn"
 	GOTO :menu
 )
 
-IF /I [%M%]==[cc] CALL :launch utils\clean\ccleaner.exe					& GOTO :menu  REM * CClenaer(Install)
-IF /I [%M%]==[c] IF [%WINBIT%]==[64] CALL :launch utils\clean\ccleaner\CCleaner64.exe	& GOTO :menu  REM * CCleaner(64-Bit)
-IF /I [%M%]==[c] IF [%WINBIT%]==[32] CALL :launch utils\clean\ccleaner\CCleaner.exe	& GOTO :menu  REM * CCleaner(32-Bit)
+IF /I [%M%]==[cc] CALL :launch utils\clean\ccleaner.exe					& GOTO :menu  REM * CClenaer Install
+IF /I [%M%]==[c] IF [%WINBIT%]==[64] CALL :launch utils\clean\ccleaner\CCleaner64.exe	& GOTO :menu  REM * CCleaner 64-Bit
+IF /I [%M%]==[c] IF [%WINBIT%]==[32] CALL :launch utils\clean\ccleaner\CCleaner.exe	& GOTO :menu  REM * CCleaner 32-Bit
 IF /I [%M%]==[cu] CALL :launch utils\clean\msicuu2\msicuu.exe				& GOTO :menu  REM * MSI CleanUp Util
 IF /I [%M%]==[af] CALL :launch utils\AutoFix.exe					& GOTO :menu  REM * AutoPlay Fix
 
@@ -196,9 +189,9 @@ IF /I [%M%]==[tb] CALL :launch end_user\Thunderbird_Setup.exe				& GOTO :menu  R
 
 IF /I [%M%]==[lo] CALL :launch end_user\LibO_Win_x86_install_multi.msi			& GOTO :menu  REM * LibreOffice
 
-IF /I [%M%]==[ts] CALL :launch utils\clean\TreeSizeFree.exe				& GOTO :menu  REM * TreeSize
-IF /I [%M%]==[w]  IF [%WINBIT%]==[64] CALL :launch utils\winrar-x64-393.exe		& GOTO :menu  REM * WinRAR (64-Bit)
-IF /I [%M%]==[w]  IF [%WINBIT%]==[32] CALL :launch utils\wrar393.exe			& GOTO :menu  REM * WinRAR (32-Bit)
+IF /I [%M%]==[ts] CALL :temp utils\clean\TreeSizeFree.exe				& GOTO :menu  REM * TreeSize
+IF /I [%M%]==[w]  IF [%WINBIT%]==[64] CALL :launch utils\winrar-x64.exe			& GOTO :menu  REM * WinRAR (64-Bit)
+IF /I [%M%]==[w]  IF [%WINBIT%]==[32] CALL :launch utils\wrar.exe			& GOTO :menu  REM * WinRAR (32-Bit)
 IF /I [%M%]==[z]  CALL :launch utils\info\cpuz.exe					& GOTO :menu  REM * CPU-Z
 
 IF /I [%M%]==[uk] CALL :temp utils\info\CrucialUKScan.exe				& GOTO :menu  REM * CrucialScan
@@ -346,13 +339,11 @@ GOTO :passwords
 CLS
 CALL scripts\banner "Install Flash Player..."
 ECHO  * Install Flash Player for Firefox etc.
-IF [%WINBIT%]==[32] internet\install_flash_player_32bit.exe -install
-IF [%WINBIT%]==[64] internet\install_flash_player_64bit.exe -install
+internet\install_flash_player.exe -install
 IF ERRORLEVEL 1 ECHO  ! Failed
 ECHO.
 ECHO  * Install Flash Player for IE
-IF [%WINBIT%]==[32] internet\install_flash_player_ax_32bit.exe -install
-IF [%WINBIT%]==[64] internet\install_flash_player_ax_64bit.exe -install
+internet\install_flash_player_ax.exe -install
 IF ERRORLEVEL 1 ECHO  ! Failed & PAUSE
 GOTO:EOF
 
