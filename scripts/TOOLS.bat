@@ -399,14 +399,15 @@ IF ERRORLEVEL 1 (
 )
 ECHO.
 ECHO * English-British Dictionary
-@MD "%PROGRAMS%\Mozilla Firefox\dictionaries"
-@DEL /Q "%PROGRAMS%\Mozilla Firefox\dictionaries\*.*"
-COPY /Y internet\en-GB@dictionaries.addons.mozilla.org\dictionaries\*.* "%PROGRAMS%\Mozilla Firefox\dictionaries\" > NUL
+COPY /Y internet\dictionaries\*.* "%PROGRAMS%\Mozilla Firefox\dictionaries\" > NUL
 IF ERRORLEVEL 1 (
 	ECHO ! Failed
 ) ELSE (
 	ECHO ! Success
 )
+REM Remove the US dictionaries (will force Firefox to use en-GB by default)
+ERASE "%PROGRAMS%\Mozilla Firefox\dictionaries\en-US.aff"
+ERASE "%PROGRAMS%\Mozilla Firefox\dictionaries\en-US.dic"
 ECHO.
 
 ECHO.

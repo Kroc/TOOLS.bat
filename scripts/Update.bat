@@ -3,8 +3,8 @@ COLOR 4E
 TITLE Tools - Update
 
 :: configure update options
-SET "UPDATE_WEEKLY=CF RK GM MS A! CC AV"
-SET "UPDATE_MONTHLY=FL FF UK Z IT V N SP"
+SET "UPDATE_WEEKLY=CF RK GM CC MS A! AV"
+SET "UPDATE_MONTHLY=FL FF SP N UK Z V IT"
 SET "UPDATE_ALL=%UPDATE_WEEKLY% %UPDATE_MONTHLY%"
 
 :menu
@@ -50,11 +50,11 @@ IF /I [%M%]==[ms] SET "TOTAL=4"
 IF /I [%M%]==[av] SET "TOTAL=4"
 IF /I [%M%]==[cc] SET "TOTAL=2"
 IF /I [%M%]==[fl] SET "TOTAL=3"
-IF /I [%M%]==[ff] SET "TOTAL=4"
+IF /I [%M%]==[ff] SET "TOTAL=3"
 IF /I [%M%]==[it] SET "TOTAL=2"
-IF /I [%M%]==[w]  SET "UPDATE_WHICH=%UPDATE_WEEKLY%"	& SET "TOTAL=17"
-IF /I [%M%]==[m]  SET "UPDATE_WHICH=%UPDATE_MONTHLY%"	& SET "TOTAL=11"
-IF /I [%M%]==[a]  SET "UPDATE_WHICH=%UPDATE_ALL%"	& SET "TOTAL=28"
+IF /I [%M%]==[w]  SET "UPDATE_WHICH=%UPDATE_WEEKLY%"	& SET "TOTAL=14"
+IF /I [%M%]==[m]  SET "UPDATE_WHICH=%UPDATE_MONTHLY%"	& SET "TOTAL=13"
+IF /I [%M%]==[a]  SET "UPDATE_WHICH=%UPDATE_ALL%"	& SET "TOTAL=27"
 
 IF "%UPDATE_WHICH%" NEQ "NONE" (
 	FOR %%I IN (%UPDATE_WHICH%) DO CALL :update_%%I
@@ -99,7 +99,7 @@ CALL :download "Microsoft Security Essentials (64-Bit)" ^
 	"..\anti_virus\mseinstall_x64.exe" ^
 	"http://mse.dlservice.microsoft.com/download/A/3/8/A38FFBF2-1122-48B4-AF60-E44F6DC28BD8/enus/amd64/mseinstall.exe"
 ::Microsoft Security Essentials (Definitions)
-CALL :download "Microsoft Security Essentials Update Definitions" ^
+CALL :download "Microsoft Security Essentials Update Definitions (32-Bit)" ^
 	"..\anti_virus\mpam-fe.exe" ^
 	"http://go.microsoft.com/fwlink/?LinkID=87342"
 ::Microsoft Security Essentials (Definitions 64-Bit)
@@ -171,18 +171,11 @@ GOTO:EOF
 CALL :download "Firefox" ^
 	"..\internet\Firefox_Setup.exe" ^
 	"https://www.mozilla.org/en-US/firefox/all.html" ^
-	"http://download\.mozilla\.org/\?product=firefox-.*?&(amp;)?os=win&(amp;)?lang=en-GB"
+	"https://download\.mozilla\.org/\?product=firefox-.*?&(amp;)?os=win&(amp;)?lang=en-GB"
 :: Firefox - AdBlock Plus
 CALL :download "Firefox - AdBlock Plus" ^
 	"..\internet\AdBlockPlus.xpi" ^
 	"https://addons.mozilla.org/en-US/firefox/downloads/latest/1865/addon-1865-latest.xpi"
-:: Firefox - British Engish Dictionary
-CALL :download "Firefox - British English Dictionary" ^
-	"..\internet\BritishEnglishDictionary.xpi" ^
-	"https://addons.mozilla.org/en-US/firefox/downloads/latest/3366/addon-3366-latest.xpi"
-ERASE /Q /F "..\internet\en-GB@dictionaries.addons.mozilla.org\*.*"
-7za x -y -o"..\internet\en-GB@dictionaries.addons.mozilla.org\" "..\internet\BritishEnglishDictionary.xpi"
-
 :: Firefox - Web of Trust
 CALL :download "Firefox - Web of Trust" ^
 	"..\internet\WebOfTrust.xpi" ^
